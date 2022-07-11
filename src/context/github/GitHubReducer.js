@@ -6,12 +6,18 @@ const gitHubReducer = (state, action) => {
         users: action.payload,
         loading: false,
       };
+    case "GET_USER":
+      return {
+        ...state,
+        user: action.payload,
+        loading: false,
+      };
     case "SET_LOADING":
       return {
         ...state,
         loading: true,
       };
-      // always spread (grab) current state when updating in reducer functions. makes a copy and is used
+    // always spread (grab) current state when updating in reducer functions. makes a copy and is used
     case "CLEAR_USERS":
       return {
         ...state,
