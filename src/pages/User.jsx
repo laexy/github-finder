@@ -6,7 +6,8 @@ import GitHubContext from "../context/github/GitHubContext";
 import { useParams } from "react-router-dom";
 import RepoList from "../components/repos/RepoList";
 
-function User({}) {
+
+function User() {
   const { getUser, user, getUserRepos, repos, loading } =
     useContext(GitHubContext);
 
@@ -15,6 +16,7 @@ function User({}) {
   useEffect(() => {
     getUser(params.login);
     getUserRepos(params.login);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //destructuring data from user object

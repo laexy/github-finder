@@ -1,5 +1,4 @@
 import { createContext, useReducer } from "react";
-import { createRenderer } from "react-dom/test-utils";
 import gitHubReducer from "./GitHubReducer";
 
 const GitHubContext = createContext();
