@@ -5,18 +5,24 @@ import Spinner from "../components/layout/Spinner";
 import GitHubContext from "../context/github/GitHubContext";
 import { useParams } from "react-router-dom";
 import RepoList from "../components/repos/RepoList";
-
+import { getUser, getUserRepos } from "../context/github/GitHubActions";
 
 function User() {
-  const { getUser, user, getUserRepos, repos, loading } =
-    useContext(GitHubContext);
+  const { user, repos, loading, dispatch } = useContext(GitHubContext);
 
   const params = useParams();
 
   useEffect(() => {
-    getUser(params.login);
-    getUserRepos(params.login);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch({ type: "SET_LOADING" });
+
+    const getUserData = async () => {
+      const userData = await getUser(params.login);
+      dispatch({ type: "GET_USER", payload: userData });
+
+      const userRepoData = await getUserRepos(params.login);
+      dispatch({ type: "GET_REPOS", payload: userRepoData });
+    };
+    getUserData();
   }, []);
 
   //destructuring data from user object
