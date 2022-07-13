@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# GitHub Finder App from React Front to Back
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Course Info
+[Link to Course](https://www.udemy.com/course/react-front-to-back-2022/)
 
 ## Available Scripts
 
